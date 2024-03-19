@@ -1,6 +1,6 @@
 Hey ! 
 
-I create a new game. 
+I create a new game : " Guess My Number "
 
 Try to find a secret number "❓"
 
