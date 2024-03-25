@@ -13,16 +13,19 @@ let score = 20;
 
 let highScore = 0;
 
+const displayMessage = function (message) {
+  document.querySelector('.message').textContent = message;
+};
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   console.log(guess);
 
   // No Number
   if (!guess) {
-    document.querySelector('.message').textContent = 'No number 🛑 ';
+    displayMessage('No number 🛑 ');
     // WIN
   } else if (guess === secretNumber) {
-    document.querySelector('.message').textContent = 'Correct Number 🏆 ';
+    displayMessage('Correct Number 🏆 ');
     document.querySelector('.number').textContent = secretNumber;
 
     document.querySelector('body').style.backgroundColor = '#60b347';
@@ -32,30 +35,42 @@ document.querySelector('.check').addEventListener('click', function () {
       highScore = score;
       document.querySelector('.highscore').textContent = highScore;
     }
-
-    // Guess high
-  } else if (guess > secretNumber) {
+  } else if (guess !== secretNumber) {
     if (score > 1) {
-      document.querySelector('.message').textContent = 'Too high ';
+      displayMessage(guess > secretNumber ? 'Too high ' : 'Too low ');
       score--;
       document.querySelector('.score').textContent = score;
     } else {
-      document.querySelector('.message').textContent = 'GAME OVER ';
-      score--;
-      document.querySelector('.score').textContent = 0;
-    }
-    // Guess low
-  } else if (guess < secretNumber) {
-    if (score > 1) {
-      document.querySelector('.message').textContent = 'Too low ';
-      score--;
-      document.querySelector('.score').textContent = score;
-    } else {
-      document.querySelector('.message').textContent = 'GAME OVER ';
+      displayMessage('GAME OVER ');
       score--;
       document.querySelector('.score').textContent = 0;
     }
   }
+
+  // Guess high
+  // } else if (guess > secretNumber) {
+  //   if (score > 1) {
+  //     document.querySelector('.message').textContent =  'Too high ' : 'Too low ';
+  //     score--;
+  //     document.querySelector('.score').textContent = score;
+  //   } else {
+  //     document.querySelector('.message').textContent = 'GAME OVER ';
+  //     score--;
+  //     document.querySelector('.score').textContent = 0;
+  //   }
+  // Guess low
+  // }
+  // else if (guess < secretNumber) {
+  //   if (score > 1) {
+  //     document.querySelector('.message').textContent = 'Too low ';
+  //     score--;
+  //     document.querySelector('.score').textContent = score;
+  //   } else {
+  //     document.querySelector('.message').textContent = 'GAME OVER ';
+  //     score--;
+  //     document.querySelector('.score').textContent = 0;
+  //   }
+  // }
 });
 
 // Réinitaliser
