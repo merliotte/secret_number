@@ -1,10 +1,10 @@
-#PIG GAME
+# PIG GAME
 
 Hey ! 
 
 I create a new game : " ##Guess My Number "
 
-[]Try to find a secret number "❓"
+-[ ] Try to find a secret number "❓"
 
 Good luck 🏆! 
 
